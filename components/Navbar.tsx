@@ -1,13 +1,25 @@
+import {useScrollPosition} from '@n8tb1t/use-scroll-position';
 import Layout from 'components/Layout';
 import Image from 'next/image';
 import { useState } from 'react';
 
-export default function Navbar() {
-	const [active, setActive] = useState(false);
+type propsNav = {
+	isActive: boolean,
+	changeActiveFromChild: any
+}
+
+export default function Navbar({isActive, changeActiveFromChild}: propsNav) {
+	const [classNavbar, setClassNavbar] = useState('relative');
+
+	// Gini amat pengen bikin sticky navbar !1!1!1! 
+	useScrollPosition(({prevPos,currPos}) => {
+		if(currPos.y == 0) setClassNavbar('relative');
+		prevPos.y > currPos.y && setClassNavbar('fixed top-0');
+	}, [classNavbar]);
 
 	return (
 		<>
-			<nav className={`py-2 z-50 px-4 relative w-full bg-blue-600 text-white`}>
+			<nav className={`py-2 z-50 px-4 ${classNavbar} w-full bg-blue-600 text-white transition-all duration-150 ease-in-out`}>
 				<Layout>
 					<div className="flex space-x-4 justify-between items-center">
 						<div className="w-full md:w-max">
@@ -21,12 +33,12 @@ export default function Navbar() {
 							</form>
 						</div>
 						<div className="relative md:flex md:items-center">
-							<div onClick={() => setActive(!active)} className="md:order-last w-12 h-12 shadow-md hover:border-2 overflow-hidden hover:border-white bg-gray-200 rounded-full">
+							<div onClick={() => changeActiveFromChild(!isActive)} className="md:order-last w-12 h-12 shadow-md hover:border-2 overflow-hidden hover:border-white bg-gray-200 rounded-full">
 								<Image src="/profile/profile.jpg" priority width={100} height={100} />
 							</div>
 
 							<nav className={`
-								md:order-first overflow-hidden shadow-md md:shadow-none md:space-x-2 md:static md:mr-8 md:flex transition-all duration-150 ease-in-out absolute ${active ? 'right-0' : '-right-60'} top-20 rounded-md bg-blue-600 text-white
+								md:order-first overflow-hidden shadow-md md:shadow-none md:space-x-2 md:static md:mr-8 md:flex transition-all duration-150 ease-in-out absolute ${isActive ? 'right-0' : '-right-60'} top-20 rounded-md bg-blue-600 text-white
 							`}>
 								
 								<div className="hover:bg-white/20 md:rounded-md flex space-x-4 items-center w-52 md:w-max px-4 py-4">
@@ -42,7 +54,7 @@ export default function Navbar() {
 							</nav>
 
 							<div className={`
-								hover:shadow-red-600/80 hover:backdrop-blur-md hover:bg-red-600/70 shadow-md group flex items-center w-52 absolute transition-all duration-300 ease-in-out md:top-20 ${active ? 'right-0' : 'md:-right-full -right-96'} top-48 bg-red-600 p-4 rounded-md
+								hover:shadow-red-600/80 hover:backdrop-blur-md hover:bg-red-600/70 shadow-md group flex items-center w-52 absolute transition-all duration-300 ease-in-out md:top-20 ${isActive ? 'right-0' : 'md:-right-full -right-96'} top-48 bg-red-600 p-4 rounded-md
 								`}>
 								<Image src="/icons/log-out.svg" width={20} height={20} />
 								<p className='group-hover:font-bold ml-2 font-light text-sm'>Logout</p>
@@ -52,11 +64,6 @@ export default function Navbar() {
 					</div>
 				</Layout>
 			</nav>
-			{ active && (
-				<div className='absolute z-40 transition-all duration-75 ease-in-out inset-0 bg-white/30 backdrop-blur-sm'>
-
-				</div>
-			)}
 		</>
 	)
 }
