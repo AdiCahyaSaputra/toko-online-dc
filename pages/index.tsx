@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Navbar from 'components/Navbar';
 import CategoryBar from 'components/CategoryBar';
 import HeadlineProduct from 'components/HeadlineProduct';
-import {useState} from "react";
+import {MutableRefObject, useRef, useState} from "react";
 
 import ProductCard from 'components/ProductCard';
 import ProductWrapper from 'components/ProductWrapper';
@@ -36,6 +36,9 @@ export default function Home({ res }: any) {
   function changeActiveFromChild(stateFromChild: boolean): void {
     setActive(stateFromChild);
   }
+  
+  // useRef issues TS solved 
+  // const nav = useRef() as MutableRefObject<HTMLDivElement>;
 
   return (
     <>
@@ -51,6 +54,12 @@ export default function Home({ res }: any) {
             Komunitas Discord
           </p>
         </header>
+        {
+          // useRef issues 
+          /*
+          (<div ref={nav}></div>)
+           */
+        }
         <Navbar isActive={active} changeActiveFromChild={changeActiveFromChild}/> 
         <HeadlineProduct/>
         <CategoryBar />
