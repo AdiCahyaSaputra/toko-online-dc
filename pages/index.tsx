@@ -9,12 +9,12 @@ import ProductCard from 'components/ProductCard';
 import ProductWrapper from 'components/ProductWrapper';
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  //const req = await fetch("https://toko-online-dea.herokuapp.com/products");
-  //const res = await req.json();
+  const req = await fetch(`${process.env.BASE_API_URL}/products`);
+  const res = await req.json();
 
   return {
     props: {
-      res: "Hello Wolrd"
+      res
     }
   }
 }
