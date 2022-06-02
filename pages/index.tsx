@@ -12,7 +12,6 @@ import CategoryBar from "components/CategoryBar";
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const res = dataProducts;
-  console.log(res);
 
   return {
     props: {
