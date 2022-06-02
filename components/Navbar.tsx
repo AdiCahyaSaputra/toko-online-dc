@@ -54,7 +54,7 @@ export default function Navbar({isActive, changeActiveFromChild}: propsNav) {
 							</nav>
 
 							<div className={`
-								hover:shadow-red-600/80 hover:backdrop-blur-md hover:bg-red-600/70 shadow-md group flex items-center w-52 absolute transition-all duration-300 ease-in-out md:top-20 ${isActive ? 'right-0' : 'md:-right-full -right-96'} top-48 bg-red-600 p-4 rounded-md
+									hover:shadow-red-600/80 hover:backdrop-blur-md hover:bg-red-600/70 shadow-md group flex items-center w-52 absolute transition-all duration-300 ease-in-out md:top-20 ${isActive ? 'right-0' : 'md:-right-[calc(100% + 200px)] -right-96'} top-48 bg-red-600 p-4 rounded-md
 								`}>
 								<Image src="/icons/log-out.svg" width={20} height={20} />
 								<p className='group-hover:font-bold ml-2 font-light text-sm'>Logout</p>

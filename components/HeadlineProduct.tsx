@@ -17,7 +17,7 @@ export default function HeadlineProduct() {
 					Selamat <br/>
 				</h1>
 				<div className="relative w-max">
-					<div className={`absolute top-0 transition-all duration-500 ${animatePop} rounded-full -right-2 w-10 h-10 bg-white`}></div>
+					<div className={`absolute top-0 transition-all border-t-4 border-l-4 border-sky-400 duration-500 ${animatePop} rounded-full -right-2 w-10 h-10 bg-white`}></div>
 					<div className="inline-block font-light text-5xl my-4 py-2 px-4 bg-sky-400/30 shadow-md backdrop-blur-sm rounded-md">
 						Berbelanja
 					</div>

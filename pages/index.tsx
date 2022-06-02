@@ -1,16 +1,18 @@
 import { GetServerSideProps } from "next";
 import Head from 'next/head';
-import Navbar from 'components/Navbar';
-import CategoryBar from 'components/CategoryBar';
-import HeadlineProduct from 'components/HeadlineProduct';
-import {MutableRefObject, useRef, useState} from "react";
+import {useRouter} from "next/router";
+
+import dataProducts from 'public/json/product.json';
 
 import ProductCard from 'components/ProductCard';
 import ProductWrapper from 'components/ProductWrapper';
+import BasicLayout from "components/BasicLayout";
+import HeadlineProduct from "components/HeadlineProduct";
+import CategoryBar from "components/CategoryBar";
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const req = await fetch(`${process.env.BASE_API_URL}/products`);
-  const res = await req.json();
+  const res = dataProducts;
+  console.log(res);
 
   return {
     props: {
@@ -20,62 +22,29 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 }
 
 export default function Home({ res }: any) {
-  const products = [
-    ["300.000", "160.000", "Keyboard K120", "Komputer"],
-    ["200.000", "120.000", "Jubah Thomas Slebew", "Pakaian"],
-    ["700.000", "400.000", "Kamera Golang", "Elektronik"],
-    ["600.000", "450.000", "Mouse Lucitik", "Komputer"],
-    ["260.000", "100.000", "Sepatu Pentopel Cool", "Sepatu"],
-    ["20.000", "10.000", "Kacamata Cool", "Kacamata"],
-    ["330.000", "150.000", "Sepatu Andri", "Sepatu"],
-    ["100.000", "75.000", "Baju Mark Zuckerberg", "Pakaian"]
-  ];
+  const products = res;
+  const Router = useRouter();
 
-  const [active, setActive] = useState(false);
-
-  function changeActiveFromChild(stateFromChild: boolean): void {
-    setActive(stateFromChild);
+  function productDetailHandler(productName: string) {
+    productName.toLowerCase();
+    Router.push(`/product/${productName}`);
   }
-  
-  // useRef issues TS solved 
-  // const nav = useRef() as MutableRefObject<HTMLDivElement>;
 
   return (
     <>
-      <div className="bg-blue-700 overflow-hidden">
-        <Head>
-          <title>Toko Online</title>
-        </Head>
-        <header className="text-white z-50 relative space-x-2 p-2 bg-blue-700 flex justify-center items-center">
-          <h1 className="font-bold">
-            Toko Online
-          </h1>
-          <p className="text-gray-300 text-sm">
-            Komunitas Discord
-          </p>
-        </header>
-        {
-          // useRef issues 
-          /*
-          (<div ref={nav}></div>)
-           */
-        }
-        <Navbar isActive={active} changeActiveFromChild={changeActiveFromChild}/> 
-        <HeadlineProduct/>
-        <CategoryBar />
-      </div>
-			{ active && (
-				<div className='fixed z-40 transition-all duration-75 ease-in-out inset-0 bg-white/30 backdrop-blur-sm'>
+      <Head>
+        <title>Toko Online</title>
+      </Head>
 
-				</div>
-			)}
-      <main className="bg-white">
-        <ProductWrapper>
-          { products.map(([hargaAsli, hargaDiskon, namaBarang, kategori]) => (
-            <ProductCard hargaAsli={hargaAsli} hargaDiskon={hargaDiskon} namaBarang={namaBarang} kategori={kategori}/>
-          )) }
-        </ProductWrapper>
-      </main>
+      <BasicLayout headlineProduct={ <HeadlineProduct/> } categoryBar={ <CategoryBar/> }>
+        <main className="bg-white pb-20">
+          <ProductWrapper>
+            {products.map(({hargaAsli, hargaDiskon, namaBarang, kategori}: any) => (
+              <ProductCard clickHandler={() => productDetailHandler(namaBarang)} hargaAsli={hargaAsli} hargaDiskon={hargaDiskon} namaBarang={namaBarang} kategori={kategori}/>
+            ))}
+          </ProductWrapper>
+        </main>
+      </BasicLayout>
     </>
   )
 }
