@@ -15,7 +15,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
   return {
     props: {
-      res: "Hello Wolrd"
+      res
     }
   }
 }
