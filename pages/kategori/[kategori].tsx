@@ -28,8 +28,9 @@ export default function Kategori({ products, kategori }: any) {
   const router = useRouter();
 
   function productDetailHandler(namaBarang: string) {
-    namaBarang.toLowerCase();
-    router.push(`/product/${namaBarang}`);
+    let product: any = namaBarang.split(' ');
+    product = product.join('-');
+    router.push(`/product/${product}`);
   }
 
   return (
@@ -38,11 +39,13 @@ export default function Kategori({ products, kategori }: any) {
         <title>Toko Online | { kategori }</title>
       </Head>
 
-      <BasicLayout headlineProduct={ <HeadlineProduct/> } categoryBar={ <CategoryBar/> }>
+      <BasicLayout>
+        <HeadlineProduct/>
+        <CategoryBar/>
         <main className="bg-white pb-20">
           <ProductWrapper>
             {products.map(({hargaAsli, hargaDiskon, namaBarang, kategori}: any) => (
-              <ProductCard clickHandler={() => productDetailHandler(namaBarang)} hargaAsli={hargaAsli} hargaDiskon={hargaDiskon} namaBarang={namaBarang} kategori={kategori}/>
+              <ProductCard clickHandler={() => productDetailHandler(namaBarang.toLowerCase())} hargaAsli={hargaAsli} hargaDiskon={hargaDiskon} namaBarang={namaBarang} kategori={kategori}/>
             ))}
           </ProductWrapper>
         </main>

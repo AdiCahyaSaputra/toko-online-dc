@@ -3,7 +3,11 @@ import HeaderLayout from 'components/HeaderLayout';
 	
 import { useState } from 'react';
 
-export default function BasicLayout({ children, headlineProduct, categoryBar }: any) {
+interface BasicLayoutProps {
+	children: React.ReactNode,
+}
+
+export default function BasicLayout({ children }: BasicLayoutProps) {
   const [active, setActive] = useState(false);
 
   function changeActiveFromChild(stateFromChild: boolean): void {
@@ -12,18 +16,15 @@ export default function BasicLayout({ children, headlineProduct, categoryBar }: 
 
 	return (
 		<>
-			{ active && (
+			{active && (
 				<div className='fixed z-40 transition-all duration-75 ease-in-out inset-0 bg-white/30 backdrop-blur-sm'></div>
 			)}
 
-			<header className="bg-blue-700 overflow-hidden">
+			<main className="bg-blue-700 overflow-hidden">
 				<HeaderLayout />
 				<Navbar isActive={active} changeActiveFromChild={changeActiveFromChild}/> 
-				{ headlineProduct ?? '' }
-				{ categoryBar ?? '' }
-			</header>
-			
-			{ children }
+				{ children }
+			</main>
 		</>
 	)
 }

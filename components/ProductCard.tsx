@@ -1,5 +1,4 @@
 import {useEffect, useState} from "react";
-import ProductWrapper from "./ProductWrapper";
 
 export default function ProductCard({clickHandler, gambar, hargaAsli, hargaDiskon, namaBarang, kategori }: any) {
 	const [classCategoryCard, setClassCategoryCard] = useState("-translate-x-full");

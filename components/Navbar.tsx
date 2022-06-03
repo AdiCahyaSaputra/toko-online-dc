@@ -14,14 +14,15 @@ export default function Navbar({isActive, changeActiveFromChild}: propsNav) {
 	// Gini amat pengen bikin sticky navbar !1!1!1! 
 	useScrollPosition(({prevPos,currPos}) => {
 		if(currPos.y == 0) setClassNavbar('relative');
-		prevPos.y > currPos.y && setClassNavbar('fixed top-0');
+		prevPos.y > currPos.y && setClassNavbar('fixed top-0 shadow-blue-600/30 shadow-md');
 	}, [classNavbar]);
 
 	return (
 		<>
-			<nav className={`py-2 z-50 px-4 ${classNavbar} w-full bg-blue-600 text-white transition-all duration-150 ease-in-out`}>
+			<nav className={`py-2 z-50 px-4 ${classNavbar} bg-blue-600 w-full text-white transition-all duration-150 ease-in-out`}>
 				<Layout>
 					<div className="flex space-x-4 justify-between items-center">
+
 						<div className="w-full md:w-max">
 							<form action="" method="get">
 								<div className="w-full flex items-center bg-white rounded-full">
@@ -32,6 +33,7 @@ export default function Navbar({isActive, changeActiveFromChild}: propsNav) {
 								</div>
 							</form>
 						</div>
+
 						<div className="relative md:flex md:items-center">
 							<div onClick={() => changeActiveFromChild(!isActive)} className="md:order-last w-12 h-12 shadow-md hover:border-2 overflow-hidden hover:border-white bg-gray-200 rounded-full">
 								<Image src="/profile/profile.jpg" priority width={100} height={100} />

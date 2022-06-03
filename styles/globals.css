@@ -1,3 +1,11 @@
+* {
+	-webkit-tap-highlight-color: transparent;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
 .no-scrollbar::-webkit-scrollbar {
 	display: none;
 }
@@ -7,9 +15,6 @@
 	scrollbar-width: none;
 }
 
-* {
-	-webkit-tap-highlight-color: transparent;
-}
 
 @tailwind base;
 @tailwind components;
