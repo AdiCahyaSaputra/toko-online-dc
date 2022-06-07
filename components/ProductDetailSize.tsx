@@ -1,3 +1,4 @@
+import {useProductContext} from "context/ProductContext";
 import {useEffect, useState} from "react";
 
 export default function ProductDetailSize() {
@@ -8,6 +9,9 @@ export default function ProductDetailSize() {
 	useEffect(() => {
 		setTimeout(() => setIsLoadSize(false), 500);
 	},[])
+
+	const context: any = useProductContext();
+	useEffect(() => context.setSizeFromChild(sizeActive), [sizeActive]);
 
 	const classWhenSizeActive = "bg-white/30";
 

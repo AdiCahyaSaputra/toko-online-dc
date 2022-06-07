@@ -5,9 +5,12 @@ import ProductDetailColor from 'components/ProductDetailColor';
 
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import {useProductContext} from 'context/ProductContext';
 
 export default function ProductDetail({ thisProduct }: any) {
 	const [isLoadDetail, setIsLoadDetail] = useState(true);
+
+	const context: any = useProductContext();
 
 	useEffect(() => {
 		setTimeout(() => setIsLoadDetail(false), 500);
@@ -28,7 +31,7 @@ export default function ProductDetail({ thisProduct }: any) {
 			</Layout>
 			<div className="md:container md:mx-auto">
 				<div className={`${ isLoadDetail && '-bottom-full' } transition-all duration-200 ease-in-out fixed md:border-none md:relative bottom-0 inset-x-0 flex items-center space-x-2 p-2 border-t border-gray-200 rounded-t-md`}>
-					<div className="flex justify-center space-x-3 items-center hover:shadow-red-600/30 hover:shadow-md hover:font-light transition-all duration-100 ease-in-out py-3 px-4 bg-red-600 text-white w-7/12 font-bold rounded-md text-sm">
+					<div onClick={() => context.setAddToCart(true)} className="flex justify-center space-x-3 items-center hover:shadow-red-600/30 hover:shadow-md hover:font-light transition-all duration-100 ease-in-out py-3 px-4 bg-red-600 text-white w-7/12 font-bold rounded-md text-sm">
 						<Image src="/icons/shopping-cart.svg" width={20} height={20} />
 						<p>Tambah Ke Keranjang</p>
 					</div>
