@@ -10,7 +10,7 @@ import BasicLayout from "components/BasicLayout";
 import CategoryBar from "components/CategoryBar";
 import HeadlineProduct from "components/HeadlineProduct";
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const res = dataProducts;
 
   return {
@@ -42,7 +42,7 @@ export default function Home({ res }: any) {
         <main className="bg-white pb-20">
           <ProductWrapper>
             {products.map(({hargaAsli, hargaDiskon, namaBarang, kategori}: any) => (
-              <ProductCard clickHandler={() => productDetailHandler(namaBarang.toLowerCase())} hargaAsli={hargaAsli} hargaDiskon={hargaDiskon} namaBarang={namaBarang} kategori={kategori}/>
+              <ProductCard keyId={Math.round(Math.random())} clickHandler={() => productDetailHandler(namaBarang.toLowerCase())} hargaAsli={hargaAsli} hargaDiskon={hargaDiskon} namaBarang={namaBarang} kategori={kategori}/>
             ))}
           </ProductWrapper>
         </main>

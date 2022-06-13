@@ -13,8 +13,10 @@ export default function Navbar({isActive, changeActiveFromChild}: propsNav) {
 
 	// Gini amat pengen bikin sticky navbar !1!1!1! 
 	useScrollPosition(({prevPos,currPos}) => {
+
 		if(currPos.y == 0) setClassNavbar('relative');
 		prevPos.y > currPos.y && setClassNavbar('fixed top-0 shadow-blue-600/30 shadow-md');
+
 	}, [classNavbar]);
 
 	return (

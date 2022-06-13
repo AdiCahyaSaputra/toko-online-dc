@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 
-export default function ProductCard({clickHandler, gambar, hargaAsli, hargaDiskon, namaBarang, kategori }: any) {
+export default function ProductCard({clickHandler,keyId, gambar, hargaAsli, hargaDiskon, namaBarang, kategori }: any) {
 	const [classCategoryCard, setClassCategoryCard] = useState("-translate-x-full");
 	const [status, setStatus] = useState(103);
 
@@ -12,7 +12,7 @@ export default function ProductCard({clickHandler, gambar, hargaAsli, hargaDisko
 	}, []);
 
 	return (
-		<div onClick={clickHandler} className="shadow-md group transition-all duration-150 hover:bg-blue-600 hover:text-white overflow-hidden col-span-6 bg-white md:col-span-3 rounded-md">
+		<div key={keyId} onClick={clickHandler} className="shadow-md group transition-all duration-150 hover:bg-blue-600 hover:text-white overflow-hidden col-span-6 bg-white md:col-span-3 rounded-md">
 			<div className="w-full aspect-video bg-blue-600/30 group-hover:bg-white/40 rounded-t-md"></div>
 			<div className={`p-1.5 group-hover:bg-white/50 transition-all duration-150 ease-in-out font-bold text-xs bg-blue-700 shadow-md text-white ${classCategoryCard}`}>{ kategori }</div>
 			<div className="p-3">
