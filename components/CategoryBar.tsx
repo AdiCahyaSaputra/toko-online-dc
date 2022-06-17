@@ -1,9 +1,9 @@
 import {useEffect, useState} from "react";
 import {useRouter} from "next/router";
 
-export default function CategoryBar() {
-	const categories = ["Komputer", "Elektronik", "Sepatu", "Pakaian", "Kacamata"];
-	const [classCategoryItem, setClassCategoryItem] = useState("-top-20");
+const CategoryBar: React.FC = () => {
+	const categories: string[] = ["Komputer", "Elektronik", "Sepatu", "Pakaian", "Kacamata"];
+	const [classCategoryItem, setClassCategoryItem] = useState<string>("-top-20");
 
 	const router = useRouter();
 	
@@ -21,7 +21,7 @@ export default function CategoryBar() {
 				<div className="py-2 flex no-scrollbar space-x-4 md:space-x-0 overflow-x-auto items-center text-white md:justify-around px-4 w-full bg-blue-600 shadow-md rounded">
 					<a onClick={() => categoryBarHandler('/')} className={`${router.asPath == '/' ? 'font-bold' : 'hover:font-bold font-light'}`}>Semua</a>
 					{categories.map(category => (
-						<a onClick={() => categoryBarHandler(`/kategori/${category.toLowerCase()}`)} className={`${router.asPath == `/kategori/${category.toLowerCase()}` ? 'font-bold' : 'hover:font-bold font-light'}`}>{ category }</a>
+						<a key={Math.floor(Math.random())} onClick={() => categoryBarHandler(`/kategori/${category.toLowerCase()}`)} className={`${router.asPath == `/kategori/${category.toLowerCase()}` ? 'font-bold' : 'hover:font-bold font-light'}`}>{ category }</a>
 					))}
 				</div>
 			</div>
@@ -29,3 +29,5 @@ export default function CategoryBar() {
 		</div>
 	)
 }
+
+export default CategoryBar;

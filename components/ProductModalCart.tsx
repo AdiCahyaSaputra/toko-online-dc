@@ -1,7 +1,16 @@
 import {useProductContext} from "context/ProductContext"
 import Image from "next/image"
 
-export default function ProductModalCart({ productModalData }: any) {
+interface ProductModalCartProps {
+	productModalData: {
+		kategori: string,
+		namaBarang: string,
+		hargaDiskon: string,
+		ukuran: string,
+		warna: string
+	}
+}
+const ProductModalCart: React.FC<ProductModalCartProps> = ({ productModalData }) => {
 
 	const context: any = useProductContext();
 
@@ -35,3 +44,6 @@ export default function ProductModalCart({ productModalData }: any) {
 		</>
 	)
 }
+
+
+export default ProductModalCart;

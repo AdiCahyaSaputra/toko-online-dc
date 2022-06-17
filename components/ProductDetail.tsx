@@ -7,7 +7,17 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import {useProductContext} from 'context/ProductContext';
 
-export default function ProductDetail({ thisProduct }: any) {
+interface ProductDetailProps {
+	thisProduct: [
+		{
+			kategori: string,
+			namaBarang: string,
+			hargaAsli: string,
+			hargaDiskon: string
+		}
+	]
+}
+const ProductDetail: React.FC<ProductDetailProps> = ({ thisProduct }) => {
 	const [isLoadDetail, setIsLoadDetail] = useState(true);
 
 	const context: any = useProductContext();
@@ -44,3 +54,5 @@ export default function ProductDetail({ thisProduct }: any) {
 		</>
 	)
 }
+
+export default ProductDetail;

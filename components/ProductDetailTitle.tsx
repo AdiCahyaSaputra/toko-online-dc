@@ -1,7 +1,14 @@
 import { useEffect, useState } from "react";
 
-export default function ProductDetailTitle({ kategori, namaBarang, hargaAsli, hargaDiskon }: any) {
-	const [isLoadTitle, setIsLoadTitle] = useState(true);
+interface ProductDetailTitleProps {
+	kategori: string,
+	namaBarang: string,
+	hargaAsli: string,
+	hargaDiskon: string,
+}
+
+const ProductDetailTitle: React.FC<ProductDetailTitleProps> = ({ kategori, namaBarang, hargaAsli, hargaDiskon }) => {
+	const [isLoadTitle, setIsLoadTitle] = useState<boolean>(true);
 	
 	useEffect(() => {
 		setTimeout(() => setIsLoadTitle(false), 500);
@@ -22,3 +29,5 @@ export default function ProductDetailTitle({ kategori, namaBarang, hargaAsli, ha
 		</>
 	)
 }
+
+export default ProductDetailTitle;

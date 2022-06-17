@@ -7,8 +7,8 @@ interface BasicLayoutProps {
 	children: React.ReactNode,
 }
 
-export default function BasicLayout({ children }: BasicLayoutProps) {
-  const [active, setActive] = useState(false);
+const BasicLayout: React.FC<BasicLayoutProps> = ({ children }) => {
+	const [active, setActive] = useState<boolean>(false);
 
   function changeActiveFromChild(stateFromChild: boolean): void {
     setActive(stateFromChild);
@@ -28,3 +28,5 @@ export default function BasicLayout({ children }: BasicLayoutProps) {
 		</>
 	)
 }
+
+export default BasicLayout;

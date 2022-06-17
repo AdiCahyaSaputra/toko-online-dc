@@ -1,10 +1,10 @@
 import {useProductContext} from "context/ProductContext";
 import {useEffect, useState} from "react";
 
-export default function ProductDetailSize() {
+const ProductDetailSize: React.FC = () => {
 	const sizes: string[] = ["sm", "md", "lg", "xl", "2xl"];
-	const [sizeActive, setSizeActive] = useState("sm");
-	const [isLoadSize, setIsLoadSize] = useState(true);
+	const [sizeActive, setSizeActive] = useState<string>("sm");
+	const [isLoadSize, setIsLoadSize] = useState<boolean>(true);
 
 	useEffect(() => {
 		setTimeout(() => setIsLoadSize(false), 500);
@@ -23,3 +23,5 @@ export default function ProductDetailSize() {
 		</nav>
 	)
 }
+
+export default ProductDetailSize;

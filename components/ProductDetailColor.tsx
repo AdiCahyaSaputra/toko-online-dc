@@ -1,10 +1,10 @@
 import {useProductContext} from "context/ProductContext";
 import { useEffect, useState } from "react";
 
-export default function ProductDetailColor() {
+const ProductDetailColor: React.FC = () => {
 	const colors: string[] = ["bg-purple-700 shadow-purple-700/30 text-white", "bg-white border border-gray-200 shadow-white/30", "text-white bg-blue-600 shadow-blue-600/30", "text-white bg-red-600 shadow-red-600/30"];
-	const [colorActive, setColorActive] = useState("bg-purple-700 shadow-purple-700/30 text-white");
-	const [isLoadColor, setIsLoadColor] = useState(true);
+	const [colorActive, setColorActive] = useState<string>("bg-purple-700 shadow-purple-700/30 text-white");
+	const [isLoadColor, setIsLoadColor] = useState<boolean>(true);
 
 	useEffect(() => {
 		setTimeout(() => setIsLoadColor(false), 500);
@@ -27,3 +27,5 @@ export default function ProductDetailColor() {
 		</>
 	)
 }
+
+export default ProductDetailColor;

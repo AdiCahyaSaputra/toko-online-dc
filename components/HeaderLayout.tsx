@@ -1,6 +1,6 @@
 import { useRouter } from "next/router"
 
-export default function HeaderLayout() {
+const HeaderLayout: React.FC = () => {
 
 	const router = useRouter();
 
@@ -15,3 +15,5 @@ export default function HeaderLayout() {
 		</header>
 	)
 }
+
+export default HeaderLayout;

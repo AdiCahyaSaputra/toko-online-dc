@@ -1,8 +1,8 @@
 import {useEffect, useState} from "react";
 
-export default function HeadlineProduct() {
-	const [classTagLine, setClassTagline] = useState("-bottom-20");
-	const [animatePop, setAnimatePop] = useState("-scale-50")
+const HeadlineProduct: React.FC = () => {
+	const [classTagLine, setClassTagline] = useState<string>("-bottom-20");
+	const [animatePop, setAnimatePop] = useState<string>("-scale-50")
 	useEffect(() => {
 		setTimeout(() => {
 			setClassTagline("bottom-0");
@@ -31,3 +31,5 @@ export default function HeadlineProduct() {
 		</div>
 	)
 }
+
+export default HeadlineProduct;

@@ -1,6 +1,7 @@
 import {GetServerSideProps} from "next";
 import Head from 'next/head';
 import {useRouter} from "next/router";
+import type { NextPage } from 'next';
 
 import dataProducts from 'public/json/product.json';
 
@@ -20,14 +21,18 @@ export const getServerSideProps: GetServerSideProps = async () => {
   }
 }
 
-export default function Home({ res }: any) {
-  const products = res;
+interface HomeProps {
+  res: object[]
+
+}
+
+const Home: NextPage<HomeProps> = ({ res }) => {
+  const products: object[] = res;
   const Router = useRouter();
 
   function productDetailHandler(productName: string) {
-    let product: any = productName.split(' ');
-    product = product.join('-');
-    Router.push(`/product/${product}`);
+    const product: string[] = productName.split(' ');
+    Router.push(`/product/${product.join('-')}`);
   }
 
   return (
@@ -42,7 +47,7 @@ export default function Home({ res }: any) {
         <main className="bg-white pb-20">
           <ProductWrapper>
             {products.map(({hargaAsli, hargaDiskon, namaBarang, kategori}: any) => (
-              <ProductCard keyId={Math.round(Math.random())} clickHandler={() => productDetailHandler(namaBarang.toLowerCase())} hargaAsli={hargaAsli} hargaDiskon={hargaDiskon} namaBarang={namaBarang} kategori={kategori}/>
+              <ProductCard keyId={Math.round(Math.random())} clickHandler={() => productDetailHandler(namaBarang.toLowerCase())} hargaAsli={hargaAsli} hargaDiskon={hargaDiskon} namaBarang={namaBarang} kategori={kategori} gambar={"Test"}/>
             ))}
           </ProductWrapper>
         </main>
@@ -50,3 +55,5 @@ export default function Home({ res }: any) {
     </>
   )
 }
+
+export default Home;

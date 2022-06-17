@@ -1,6 +1,16 @@
-import {useEffect, useState} from "react";
+import {MouseEventHandler, useEffect, useState} from "react";
 
-export default function ProductCard({clickHandler,keyId, gambar, hargaAsli, hargaDiskon, namaBarang, kategori }: any) {
+interface ProductCardProps {
+	clickHandler: MouseEventHandler,
+	keyId: number,
+	gambar: string,
+	hargaAsli: string,
+	hargaDiskon: string,
+	namaBarang: string,
+	kategori: string
+}
+
+const ProductCard: React.FC<ProductCardProps> = ({clickHandler,keyId, gambar, hargaAsli, hargaDiskon, namaBarang, kategori }) => {
 	const [classCategoryCard, setClassCategoryCard] = useState("-translate-x-full");
 	const [status, setStatus] = useState(103);
 
@@ -10,6 +20,8 @@ export default function ProductCard({clickHandler,keyId, gambar, hargaAsli, harg
 			setStatus(200);
 		}, 500);
 	}, []);
+
+	console.log(gambar);
 
 	return (
 		<div key={keyId} onClick={clickHandler} className="shadow-md group transition-all duration-150 hover:bg-blue-600 hover:text-white overflow-hidden col-span-6 bg-white md:col-span-3 rounded-md">
@@ -27,3 +39,5 @@ export default function ProductCard({clickHandler,keyId, gambar, hargaAsli, harg
 		</div>
 	)
 }
+
+export default ProductCard;

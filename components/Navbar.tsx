@@ -3,13 +3,13 @@ import Layout from 'components/Layout';
 import Image from 'next/image';
 import { useState } from 'react';
 
-type propsNav = {
+type NavbarProps = {
 	isActive: boolean,
-	changeActiveFromChild: any
+	changeActiveFromChild: Function
 }
 
-export default function Navbar({isActive, changeActiveFromChild}: propsNav) {
-	const [classNavbar, setClassNavbar] = useState('relative');
+const Navbar: React.FC<NavbarProps> = ({isActive, changeActiveFromChild}) => {
+	const [classNavbar, setClassNavbar] = useState<string>('relative');
 
 	// Gini amat pengen bikin sticky navbar !1!1!1! 
 	useScrollPosition(({prevPos,currPos}) => {
@@ -71,3 +71,6 @@ export default function Navbar({isActive, changeActiveFromChild}: propsNav) {
 		</>
 	)
 }
+
+
+export default Navbar;
