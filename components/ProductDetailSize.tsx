@@ -17,8 +17,8 @@ const ProductDetailSize: React.FC = () => {
 
 	return (
 		<nav className={`${isLoadSize && 'animate-pulse'} rounded-full bg-blue-600 md:p-1 p-2 flex justify-between md:justify-around md:w-max items-center md:space-x-4`}>
-			{sizes.map(size => (
-				<div key={size} onClick={() => setSizeActive(size)} className={`${isLoadSize && 'h-5'} md:text-sm py-1.5 transition-all duration-150 hover:bg-white/30 px-4 rounded-full ${sizeActive === size && classWhenSizeActive} text-center text-white font-medium`}>{ !isLoadSize && size }</div>
+			{sizes.map((size, index) => (
+				<div key={index} onClick={() => setSizeActive(size)} className={`${isLoadSize && 'h-5'} cursor-pointer md:text-sm py-1.5 transition-all duration-150 hover:bg-white/30 px-4 rounded-full ${sizeActive === size && classWhenSizeActive} text-center text-white font-medium`}>{ !isLoadSize && size }</div>
 			))}
 		</nav>
 	)

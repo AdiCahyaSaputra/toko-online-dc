@@ -21,7 +21,7 @@ const Navbar: React.FC<NavbarProps> = ({isActive, changeActiveFromChild}) => {
 
 	return (
 		<>
-			<nav className={`py-2 z-50 px-4 ${classNavbar} bg-blue-600 w-full text-white transition-all duration-150 ease-in-out`}>
+			<nav className={`z-50 px-4 ${classNavbar} bg-blue-600 w-full text-white transition-all duration-150 ease-in-out`}>
 				<Layout>
 					<div className="flex space-x-4 justify-between items-center">
 
@@ -45,12 +45,12 @@ const Navbar: React.FC<NavbarProps> = ({isActive, changeActiveFromChild}) => {
 								md:order-first overflow-hidden shadow-md md:shadow-none md:space-x-2 md:static md:mr-8 md:flex transition-all duration-150 ease-in-out absolute ${isActive ? 'right-0' : '-right-60'} top-20 rounded-md bg-blue-600 text-white
 							`}>
 								
-								<div className="hover:bg-white/20 md:rounded-md flex space-x-4 items-center w-52 md:w-max px-4 py-4">
+								<div className="cursor-pointer hover:bg-white/20 md:rounded-md flex space-x-4 items-center w-52 md:w-max px-4 py-4">
 									<Image src="/icons/user.svg" width={20} height={20} />
 									<p className="font-medium text-sm">Profil</p>
 								</div>
 
-								<div className="hover:bg-white/20 md:rounded-md flex space-x-4 items-center w-52 md:w-max px-4 py-4">
+								<div className="cursor-pointer hover:bg-white/20 md:rounded-md flex space-x-4 items-center w-52 md:w-max px-4 py-4">
 									<Image src="/icons/shopping-cart.svg" width={20} height={20} />
 									<p className="font-medium text-sm">Keranjang</p>
 								</div>
@@ -58,7 +58,7 @@ const Navbar: React.FC<NavbarProps> = ({isActive, changeActiveFromChild}) => {
 							</nav>
 
 							<div className={`
-									hover:shadow-red-600/80 hover:backdrop-blur-md hover:bg-red-600/70 shadow-md group flex items-center w-52 absolute transition-all duration-300 ease-in-out md:top-20 ${isActive ? 'right-0' : 'md:-right-[calc(100% + 200px)] -right-96'} top-48 bg-red-600 p-4 rounded-md
+									hover:shadow-red-600/80 cursor-pointer hover:backdrop-blur-md hover:bg-red-600/70 shadow-md group flex items-center w-52 absolute transition-all duration-200 md:top-20 ${isActive ? 'right-0' : 'md:-right-[calc(100% + 200px)] -right-96'} top-48 bg-red-600 p-4 rounded-md
 								`}>
 								<Image src="/icons/log-out.svg" width={20} height={20} />
 								<p className='group-hover:font-bold ml-2 font-light text-sm'>Logout</p>

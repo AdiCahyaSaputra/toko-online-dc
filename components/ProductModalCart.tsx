@@ -16,8 +16,8 @@ const ProductModalCart: React.FC<ProductModalCartProps> = ({ productModalData })
 
 	return (
 		<>
-			<div className="absolute inset-0 z-30 flex flex-col justify-center items-center backdrop-blur-md bg-white/30">
-				<div className="p-4 w-10/12 bg-white rounded-md">
+			<div className="absolute inset-0 z-30 flex flex-col justify-center items-center backdrop-blur-md bg-black/30">
+				<div className="p-4 md:w-6/12 w-10/12 bg-white rounded-md">
 					<header className="py-3 px-4 bg-red-600 rounded-md flex space-x-3 font-bold text-white">
 						<Image src="/icons/shopping-cart.svg" width={24} height={24}/>
 						<h1>Informasi Produk</h1>
@@ -37,8 +37,8 @@ const ProductModalCart: React.FC<ProductModalCartProps> = ({ productModalData })
 					</main>
 				</div>
 				<div className="flex space-x-3 mt-4">
-					<div onClick={() => context.setAddToCart(false)} className="py-2 px-4 hover:shadow-md hover:shadow-red-600 hover:font-light rounded-md bg-red-600 text-white font-bold">Batal</div>
-					<div className="py-2 px-4 hover:shadow-md hover:shadow-blue-600 hover:font-light rounded-md bg-blue-600 text-white font-bold">Lanjutkan</div>
+					<div onClick={() => context.setAddToCart(false)} className="py-2 cursor-pointer px-4 hover:shadow-md hover:shadow-red-600 hover:text-white/60 rounded-md bg-red-600 text-white font-bold">Batal</div>
+					<div className="py-2 px-4 hover:shadow-md cursor-pointer hover:shadow-blue-600 hover:text-white/60 rounded-md bg-blue-600 text-white font-bold">Lanjutkan</div>
 				</div>
 			</div>
 		</>

@@ -19,9 +19,9 @@ const CategoryBar: React.FC = () => {
 		<div className="relative overflow-hidden">
 			<div className={`absolute transition-all duration-400 delay-200 ${classCategoryItem} container mx-auto p-2 relative z-10`}>
 				<div className="py-2 flex no-scrollbar space-x-4 md:space-x-0 overflow-x-auto items-center text-white md:justify-around px-4 w-full bg-blue-600 shadow-md rounded">
-					<a onClick={() => categoryBarHandler('/')} className={`${router.asPath == '/' ? 'font-bold' : 'hover:font-bold font-light'}`}>Semua</a>
+					<a onClick={() => categoryBarHandler('/')} className={`${router.asPath == '/' ? 'font-bold' : 'hover:font-bold font-light'} cursor-pointer`}>Semua</a>
 					{categories.map(category => (
-						<a key={Math.floor(Math.random())} onClick={() => categoryBarHandler(`/kategori/${category.toLowerCase()}`)} className={`${router.asPath == `/kategori/${category.toLowerCase()}` ? 'font-bold' : 'hover:font-bold font-light'}`}>{ category }</a>
+						<a key={Math.floor(Math.random())} onClick={() => categoryBarHandler(`/kategori/${category.toLowerCase()}`)} className={`${router.asPath == `/kategori/${category.toLowerCase()}` ? 'font-bold' : 'hover:font-bold font-light'} cursor-pointer`}>{ category }</a>
 					))}
 				</div>
 			</div>

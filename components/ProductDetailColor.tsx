@@ -20,7 +20,7 @@ const ProductDetailColor: React.FC = () => {
 		<>
 			<nav className="mt-4 p-2 flex items-center space-x-6">
 				{colors.map((color, index) => ( <>
-					<div key={index} onClick={() => setColorActive(color)} className={`${isLoadColor && 'scale-75'} transition-all duration-200 ease-in-out w-max rounded-full ${color} ${colorActive === color ? classWhenColorActive : classColorDefault} border border-gray-200`}></div> 
+					<div key={index} onClick={() => setColorActive(color)} className={`${isLoadColor && 'scale-75'} cursor-pointer transition-all duration-200 ease-in-out w-max rounded-full ${color} ${colorActive === color ? classWhenColorActive : classColorDefault} border border-gray-200`}></div> 
 				</>
 				))}
 			</nav>

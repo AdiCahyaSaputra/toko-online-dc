@@ -7,7 +7,7 @@ import Head from "next/head";
 import dataProduct from 'public/json/product.json';
 import ProductDetail from "components/ProductDetail";
 import ProductModalCart from "components/ProductModalCart";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
 	const { product } = ctx.query;
@@ -57,10 +57,6 @@ export default function Product({ thisProduct }: any) {
 			setAddToCart(isActive);
 		}
 	}
-
-	useEffect(() => {
-		console.log(productModalData);
-	}, [productModalData]);
 
 	return (
 		<>
