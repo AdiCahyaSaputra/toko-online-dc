@@ -22,12 +22,20 @@ export const getServerSideProps: GetServerSideProps = async () => {
 }
 
 interface HomeProps {
-  res: object[]
+  res: [
+    {
+      namaBarang: string,
+      kategori: string,
+      hargaAsli: string,
+      hargaDiskon: string,
+      gambar: string
+    }
+  ]
 
 }
 
 const Home: NextPage<HomeProps> = ({ res }) => {
-  const products: object[] = res;
+  const products: HomeProps['res'] = res;
   const Router = useRouter();
 
   function productDetailHandler(productName: string) {

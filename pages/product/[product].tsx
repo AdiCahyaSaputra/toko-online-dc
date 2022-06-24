@@ -3,6 +3,7 @@ import { ProductContext } from 'context/ProductContext';
 
 import { GetServerSideProps } from "next"
 import Head from "next/head";
+import type { NextPage } from "next";
 
 import dataProduct from 'public/json/product.json';
 import ProductDetail from "components/ProductDetail";
@@ -28,16 +29,30 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 	}
 }
 
-export default function Product({ thisProduct }: any) {
-	const [productModalData, setProductModalData] = useState({
+interface ProductProps {
+	thisProduct: [
+		{
+			namaBarang: string,
+			kategori: string,
+			hargaDiskon: string,
+			hargaAsli: string,
+			warna: string,
+			ukuran: string
+		}
+	]
+}
+
+const Product: NextPage<ProductProps> = ({ thisProduct }) => {
+	const [productModalData, setProductModalData] = useState<ProductProps['thisProduct'][0]>({
 		namaBarang: thisProduct[0].namaBarang,
 		kategori: thisProduct[0].kategori,
 		hargaDiskon: thisProduct[0].hargaDiskon,
+		hargaAsli: "",
 		warna: "bg-purple-700 shadow-purle-700/30 text-white",
 		ukuran: "Sm",
 	});
 
-	const [addToCart, setAddToCart] = useState(false);
+	const [addToCart, setAddToCart] = useState<boolean>(false);
 
 	const productSetter = {
 		setColorFromChild(warna: string) {
@@ -77,3 +92,4 @@ export default function Product({ thisProduct }: any) {
 	)
 }
 
+export default Product;

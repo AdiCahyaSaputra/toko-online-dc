@@ -6,6 +6,7 @@ import ProductWrapper from "components/ProductWrapper";
 
 import {GetServerSideProps} from "next";
 import Head from "next/head";
+import type { NextPage } from "next";
 import { useRouter } from "next/router";
 
 import dataProducts from 'public/json/product.json';
@@ -24,13 +25,12 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   }
 }
 
-export default function Kategori({ products, kategori }: any) {
+const Kategori: NextPage = ({ products, kategori }:any) => {
   const router = useRouter();
 
   function productDetailHandler(namaBarang: string) {
-    let product: any = namaBarang.split(' ');
-    product = product.join('-');
-    router.push(`/product/${product}`);
+    let product: string[] = namaBarang.split(' ');
+    router.push(`/product/${product.join('-')}`);
   }
 
   return (
@@ -53,3 +53,5 @@ export default function Kategori({ products, kategori }: any) {
     </>
   )
 }
+
+export default Kategori;
