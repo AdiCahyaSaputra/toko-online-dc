@@ -1,7 +1,7 @@
 import {useProductContext} from "context/ProductContext"
 import Image from "next/image"
 
-interface ProductModalCartProps {
+type ProductModalCartProps = {
 	productModalData: {
 		kategori: string,
 		namaBarang: string,

@@ -1,6 +1,6 @@
 import {MouseEventHandler, useEffect, useState} from "react";
 
-interface ProductCardProps {
+type ProductCardProps = {
 	clickHandler: MouseEventHandler,
 	keyId: number,
 	gambar: string,
@@ -19,6 +19,10 @@ const ProductCard: React.FC<ProductCardProps> = ({clickHandler,keyId, gambar, ha
 			setClassCategoryCard('translate-x-0');
 			setStatus(200);
 		}, 500);
+
+		return () => {
+			clearTimeout();
+		}
 	}, []);
 
 	console.log(gambar);

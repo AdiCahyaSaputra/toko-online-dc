@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-interface ProductDetailTitleProps {
+type ProductDetailTitleProps = {
 	kategori: string,
 	namaBarang: string,
 	hargaAsli: string,
@@ -12,6 +12,10 @@ const ProductDetailTitle: React.FC<ProductDetailTitleProps> = ({ kategori, namaB
 	
 	useEffect(() => {
 		setTimeout(() => setIsLoadTitle(false), 500);
+
+		return () => {
+			clearTimeout();
+		}
 	}, []);
 
 	return (

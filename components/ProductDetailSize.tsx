@@ -8,6 +8,10 @@ const ProductDetailSize: React.FC = () => {
 
 	useEffect(() => {
 		setTimeout(() => setIsLoadSize(false), 500);
+
+		return () => {
+			clearTimeout();
+		}
 	},[])
 
 	const context: any = useProductContext();

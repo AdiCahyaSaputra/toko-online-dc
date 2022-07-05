@@ -7,7 +7,7 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import {useProductContext} from 'context/ProductContext';
 
-interface ProductDetailProps {
+type ProductDetailProps = {
 	thisProduct: [
 		{
 			kategori: string,

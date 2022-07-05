@@ -21,7 +21,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
   }
 }
 
-interface HomeProps {
+type HomeProps = {
   res: [
     {
       namaBarang: string,
@@ -54,8 +54,8 @@ const Home: NextPage<HomeProps> = ({ res }) => {
         <CategoryBar/>
         <main className="bg-white pb-20">
           <ProductWrapper>
-            {products.map(({hargaAsli, hargaDiskon, namaBarang, kategori}: any) => (
-              <ProductCard keyId={Math.round(Math.random())} clickHandler={() => productDetailHandler(namaBarang.toLowerCase())} hargaAsli={hargaAsli} hargaDiskon={hargaDiskon} namaBarang={namaBarang} kategori={kategori} gambar={"Test"}/>
+            {products.map(({hargaAsli, hargaDiskon, namaBarang, kategori}, index) => (
+              <ProductCard keyId={index} clickHandler={() => productDetailHandler(namaBarang.toLowerCase())} hargaAsli={hargaAsli} hargaDiskon={hargaDiskon} namaBarang={namaBarang} kategori={kategori} gambar={"Test"}/>
             ))}
           </ProductWrapper>
         </main>

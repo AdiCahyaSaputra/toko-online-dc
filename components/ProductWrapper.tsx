@@ -1,6 +1,6 @@
 import Layout from "components/Layout";
 
-interface ProductWrapperProps {
+type ProductWrapperProps = {
 	children: React.ReactNode
 }
 

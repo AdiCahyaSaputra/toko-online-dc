@@ -3,11 +3,16 @@ import {useEffect, useState} from "react";
 const HeadlineProduct: React.FC = () => {
 	const [classTagLine, setClassTagline] = useState<string>("-bottom-20");
 	const [animatePop, setAnimatePop] = useState<string>("-scale-50")
+
 	useEffect(() => {
 		setTimeout(() => {
 			setClassTagline("bottom-0");
 			setAnimatePop("scale-100");
 		}, 300);
+
+		return () => {
+			clearTimeout();
+		}
 	}, []);
 
 	return (

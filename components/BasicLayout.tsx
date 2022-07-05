@@ -3,7 +3,7 @@ import HeaderLayout from 'components/HeaderLayout';
 	
 import { useState } from 'react';
 
-interface BasicLayoutProps {
+type BasicLayoutProps = {
 	children: React.ReactNode,
 }
 

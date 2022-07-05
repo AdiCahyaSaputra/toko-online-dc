@@ -8,6 +8,10 @@ const ProductDetailColor: React.FC = () => {
 
 	useEffect(() => {
 		setTimeout(() => setIsLoadColor(false), 500);
+
+		return () => {
+			clearTimeout();
+		}
 	}, []);
 
 	const context: any = useProductContext();

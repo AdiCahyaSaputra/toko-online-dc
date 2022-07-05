@@ -13,10 +13,8 @@ import {useState} from "react";
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
 	const { product } = ctx.query;
 	const thisProduct = dataProduct.filter(el => {
-		let { namaBarang }: any = el;
-		namaBarang = namaBarang.toLowerCase();
-		namaBarang = namaBarang.split(' ');
-		namaBarang = namaBarang.join('-');
+		let { namaBarang } = el;
+		namaBarang = namaBarang.toLowerCase().split(' ').join('-');
 
 		if(product === namaBarang) return el;
 
@@ -29,7 +27,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 	}
 }
 
-interface ProductProps {
+type ProductProps = {
 	thisProduct: [
 		{
 			namaBarang: string,
