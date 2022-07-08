@@ -17,7 +17,7 @@ const BasicLayout: React.FC<BasicLayoutProps> = ({ children }) => {
 	return (
 		<>
 			{active && (
-				<div className='fixed z-40 transition-all duration-75 ease-in-out inset-0 bg-white/30 backdrop-blur-sm'></div>
+				<div className='fixed z-40 transition-all duration-75 ease-in-out inset-0 bg-black/40'></div>
 			)}
 
 			<main className="bg-blue-700 overflow-hidden">

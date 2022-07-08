@@ -8,15 +8,18 @@ import dataProducts from 'public/json/product.json';
 import ProductCard from "components/ProductCard";
 import ProductWrapper from "components/ProductWrapper";
 import BasicLayout from "components/BasicLayout";
-import CategoryBar from "components/CategoryBar";
 import HeadlineProduct from "components/HeadlineProduct";
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const res = dataProducts;
 
+  const getProducts = await fetch("https://toko-online-dc.herokuapp.com/api/v1/products");
+  const { results: productsData } = await getProducts.json();
+
   return {
     props: {
-      res
+      res,
+      productsData
     }
   }
 }
@@ -30,11 +33,13 @@ type HomeProps = {
       hargaDiskon: string,
       gambar: string
     }
-  ]
+  ],
+
+  productsData: Array<object>
 
 }
 
-const Home: NextPage<HomeProps> = ({ res }) => {
+const Home: NextPage<HomeProps> = ({ res, productsData }) => {
   const products: HomeProps['res'] = res;
   const Router = useRouter();
 
@@ -51,11 +56,10 @@ const Home: NextPage<HomeProps> = ({ res }) => {
 
       <BasicLayout>
         <HeadlineProduct/>
-        <CategoryBar/>
         <main className="bg-white pb-20">
           <ProductWrapper>
-            {products.map(({hargaAsli, hargaDiskon, namaBarang, kategori}, index) => (
-              <ProductCard keyId={index} clickHandler={() => productDetailHandler(namaBarang.toLowerCase())} hargaAsli={hargaAsli} hargaDiskon={hargaDiskon} namaBarang={namaBarang} kategori={kategori} gambar={"Test"}/>
+            {productsData.map((data: any) => (
+              <ProductCard key={data.id} data={data} clickHandler={() => console.log("Hello")} />
             ))}
           </ProductWrapper>
         </main>
