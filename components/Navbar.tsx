@@ -1,7 +1,8 @@
-import {useScrollPosition} from '@n8tb1t/use-scroll-position';
+// import {useScrollPosition} from '@n8tb1t/use-scroll-position';
+import { useScrollPosition } from '@n8tb1t/use-scroll-position';
 import Layout from 'components/Layout';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 type NavbarProps = {
 	isActive: boolean,
@@ -10,8 +11,9 @@ type NavbarProps = {
 
 const Navbar: React.FC<NavbarProps> = ({isActive, changeActiveFromChild}) => {
 	const [classNavbar, setClassNavbar] = useState<string>('relative');
+	const target = useRef<HTMLElement | null>(null);
 
-	// Gini amat pengen bikin sticky navbar !1!1!1! 
+	// Gini amat pengen bikin sticky navbar !1!1!1!
 	useScrollPosition(({prevPos,currPos}) => {
 
 		if(currPos.y == 0) setClassNavbar('relative');
@@ -21,7 +23,7 @@ const Navbar: React.FC<NavbarProps> = ({isActive, changeActiveFromChild}) => {
 
 	return (
 		<>
-			<nav className={`z-50 px-4 ${classNavbar} bg-blue-600 w-full text-white transition-all duration-150 ease-in-out`}>
+			<nav ref={target}className={`z-50 px-4 ${classNavbar} bg-blue-600 w-full text-white transition-all duration-150 ease-in-out`}>
 				<Layout>
 					<div className="flex space-x-4 justify-between items-center">
 

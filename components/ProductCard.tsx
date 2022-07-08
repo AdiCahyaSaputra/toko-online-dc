@@ -25,8 +25,6 @@ const ProductCard: React.FC<ProductCardProps> = ({clickHandler,keyId, gambar, ha
 		}
 	}, []);
 
-	console.log(gambar);
-
 	return (
 		<div key={keyId} onClick={clickHandler} className="shadow-md group transition-all duration-150 hover:bg-blue-600 hover:text-white overflow-hidden col-span-6 bg-white md:col-span-3 rounded-md">
 			<div className="w-full aspect-video bg-blue-600/30 group-hover:bg-white/40 rounded-t-md"></div>
